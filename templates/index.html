@@ -1,51 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/main.css">
-    <title>Todo 앱</title>
-</head>
-<body>
-    <!-- <h1>todo 앱</h1>
-    <p>{{todos}}</p>
-    <p>{{data2}}</p>
-    <img src="static/images/cat.jpg" alt="cat 이미지"> -->
-    <!-- <img src="{{ url_for('static', path ='images/cat.jpg') }}" alt="cat 이미지"> -->
+<!-- base.html 파일 상속 받음 -->
+{% extends 'base.html' %}
+<!-- 현재 페이지의 내용 -->
+{% block content %}
 
-    <main>
-        <a href="/"><p class="head_img"></p></a>
-         <h4>나를 성장시키는 메모</h4>
-         <br>
-        <form action="/add" method="post">
-            <!-- <textarea name="task" rows="5" placeholder="Enter your task" id="task" required></textarea> -->
-            <textarea name="task" rows="5" placeholder="Enter your task" id="task"></textarea>
-            <button type="submit" id="add_task">
-             Add
-            </button>
-        </form>
-        <br>
-        <h2> Tasks </h2>
-        <div>
-            <p>{{todos}}</p>
-            {% for todo in todos %}
-            <div class="task">
-                <!-- todo.completed=True 또는 False 구분해서 표시-->
-                {% if todo.completed %}
-                    <strike>{{ todo.task }}</strike>
-                {% else %}
-                    {{ todo.task }}
-                {% endif %}
-                <small>
-                    <a href="edit/{{ todo.id }}">Edit</a>
-                    <a href="delete/{{ todo.id }}">Delete</a>
-                </small>
-            </div>
-            {% endfor %}
+    <form action="/add" method="post">
+                <!-- <textarea name="task" rows="5" placeholder="Enter your task" id="task" required></textarea> -->
+                <textarea name="task" rows="5" placeholder="Enter your task" id="task"></textarea>
+                <button type="submit" id="add_task">
+                Add
+                </button>
+            </form>
+            <br>
+            <h2> Tasks </h2>
+            <div>
+                {% for todo in todos %}
+                <div class="task">
+                    <!-- todo.completed=True 또는 False 구분해서 표시-->
+                    {% if todo.completed %}
+                        <strike>{{ todo.task }}</strike>
+                    {% else %}
+                        {{ todo.task }}
+                    {% endif %}
+                    <small>
+                        <a href="edit/{{ todo.id }}">Edit</a>
+                        <a href="delete/{{ todo.id }}">Delete</a>
+                    </small>
+                </div>
+                {% endfor %}
             
-
-        </div>
-    </main>
-
-</body>
-</html>
+{% endblock content %}

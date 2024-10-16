@@ -1,0 +1,28 @@
+<!-- 부모 페이지 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <title>Todo 앱</title>
+</head>
+<body>
+    <!-- <h1>todo 앱</h1>
+    <p>{{todos}}</p>
+    <p>{{data2}}</p>
+    <img src="static/images/cat.jpg" alt="cat 이미지"> -->
+    <!-- <img src="{{ url_for('static', path ='images/cat.jpg') }}" alt="cat 이미지"> -->
+
+    <main>
+        <a href="/"><p class="head_img"></p></a>
+         <h4>고먐미</h4>
+         <br>
+         {% block content %}
+        <!-- 자식페이지에 채워야 하는 공간 -->
+         {% endblock content %}
+        </div>
+    </main>
+
+</body>
+</html>
